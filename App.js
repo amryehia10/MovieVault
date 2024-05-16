@@ -10,14 +10,21 @@ import StackNavigation from './navigation/StackNavigation';
 const queryClient = new QueryClient();
 
 export default function App() {
+  
   return (
     <>
       <Provider store={store}>
           <NavigationContainer>
             <QueryClientProvider client={queryClient}>
-              <StackNavigation>
-                  {/* <StatusBar hidden={false}></StatusBar> */}
-              </StackNavigation>
+                <StatusBar 
+                hidden={true} 
+                backgroundColor='black' 
+                showHideTransition={'fade'} 
+                animated={true}
+                barStyle={'dark-content'}
+                ></StatusBar>
+              <BottomTaps>
+              </BottomTaps>
             </QueryClientProvider>
           </NavigationContainer>
       </Provider>

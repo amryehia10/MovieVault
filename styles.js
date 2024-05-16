@@ -22,11 +22,14 @@ export default StyleSheet.create({
     },
     flatListContent: {
         alignItems: 'center', 
-        paddingVertical: 30,
+        paddingVertical: 10,
     },
     filters: {
         flexDirection: "row",
-        marginBottom:10
+        marginBottom:10,
+        marginTop:20,
+        alignItems:"center",
+        justifyContent:"center"
     },
     inputData: {
         flexDirection:"row",
@@ -36,9 +39,6 @@ export default StyleSheet.create({
     },
     input: {
         height: 40,
-        borderBottomWidth: 2,
-        borderColor:"#03a9f4",
-        padding: 10,
         flex:1,
         color:"white",
         fontSize:20,
@@ -46,5 +46,13 @@ export default StyleSheet.create({
     Searchcontainer: {
         backgroundColor: "black",
         flex:1
-    }
+    },
+    cardContainer: {
+        position:"absolute",
+        backgroundColor:"rgba(0, 0, 0, 0.4)",
+        top:0,
+        left:0,
+        height:"100%",
+        width:"100%"
+      }
 })

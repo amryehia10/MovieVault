@@ -6,7 +6,6 @@ import MovieCard from '../components/MovieCard';
 
 const Favorites = () => {
     const favMovies = useSelector((state) => state.favoriteMovies.favoriteMovies)
-
     if (favMovies.length > 0)
     return (
         <View style={styles.container}>

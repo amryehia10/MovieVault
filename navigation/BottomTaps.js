@@ -1,11 +1,11 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import {StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import routes from '../utiles/routes'
-import Home from '../screens/Home';
 import Favorites from '../screens/Favorites';
 import { MaterialIcons } from '@expo/vector-icons';
 import Search from '../screens/Search'
+import StackNavigation from './StackNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -13,19 +13,19 @@ const BottomTaps = () => {
     return (
         <Tab.Navigator>
             <Tab.Screen name={routes.home} 
-            component={Home}
+            component={StackNavigation}
             options={
                 {
                     header:()=>null,
                     tabBarIcon: ({focused}) => {
                         return (
-                            focused?<MaterialIcons name="home" color="#03a9f4" size={23} /> : <MaterialIcons name="home" color="white" size={23} />
+                            focused?<MaterialIcons name="home" color="#b71c1c" size={23} /> : <MaterialIcons name="home" color="white" size={23} />
                         );
                       },
                       tabBarStyle: {
                         backgroundColor:"black"
                       },
-                      tabBarActiveTintColor:"#03a9f4",
+                      tabBarActiveTintColor:"#b71c1c",
                       tabBarLabelStyle: {
                         fontSize:15
                       }
@@ -38,13 +38,13 @@ const BottomTaps = () => {
                      header:()=>null,
                      tabBarIcon: ({focused}) => {
                          return (
-                             focused?<MaterialIcons name="search" color="#03a9f4" size={23} /> : <MaterialIcons name="search" color="white" size={23} />
+                             focused?<MaterialIcons name="search" color="#b71c1c" size={23} /> : <MaterialIcons name="search" color="white" size={23} />
                          );
                        },
                        tabBarStyle: {
                          backgroundColor:"black"
                        },
-                       tabBarActiveTintColor:"#03a9f4",
+                       tabBarActiveTintColor:"#b71c1c",
                        tabBarLabelStyle: {
                          fontSize:15
                        }
@@ -57,13 +57,13 @@ const BottomTaps = () => {
                     header:()=>null,
                     tabBarIcon: ({focused}) => {
                         return (
-                            focused?<MaterialIcons name="favorite" color="#03a9f4" size={23} /> : <MaterialIcons name="favorite" color="white" size={23} />
+                            focused?<MaterialIcons name="favorite" color="#b71c1c" size={23} /> : <MaterialIcons name="favorite" color="white" size={23} />
                         );
                       },
                       tabBarStyle: {
                         backgroundColor:"black"
                       },
-                      tabBarActiveTintColor:"#03a9f4",
+                      tabBarActiveTintColor:"#b71c1c",
                       tabBarLabelStyle: {
                         fontSize:15
                       }

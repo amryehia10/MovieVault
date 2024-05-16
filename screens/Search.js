@@ -7,6 +7,7 @@ import "react-native-get-random-values";
 import { v4 as uuidv4 } from 'uuid';
 import MovieCard from '../components/MovieCard';
 import { MaterialIcons } from '@expo/vector-icons';
+import { Input } from 'react-native-elements';
 
 const Search = () => {
     const {data, isPending, error} = useMovies();
@@ -16,9 +17,7 @@ const Search = () => {
     const onChange = (text) => {
         setSearchResult(text)
         setSearchResultData(data.results.filter((d)=>d.title.toLowerCase().includes(searchResult.toLowerCase())))
-        console.log(searchResult);
     
-        console.warn(searchResultData.length);
     }
 
     if (isPending)return <ActivityIndicator animating={true} color='#03a9f4' size={'large'} style={styles.spinner}/>
@@ -31,7 +30,13 @@ const Search = () => {
     return (
         <View style={styles.Searchcontainer}>
             <View style={styles.inputData}>
-                <TextInput placeholder='Movie Name' placeholderTextColor='gray' value={searchResult} style={styles.input} onChangeText={(text) => onChange(text)}></TextInput>
+                <Input 
+                placeholder='Movie Name' 
+                placeholderTextColor='gray' 
+                value={searchResult} inputStyle={styles.input} 
+                onChangeText={(text) => onChange(text)}
+                leftIcon={{ type: 'font-awesome', name: 'search' }}
+                ></Input>
             </View>
             <View>
             <FlatList data={searchResultData} 

@@ -1,39 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Image, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
-import storage from '../Storage/storage'
-import { useDispatch, useSelector } from 'react-redux';
-import { addToFavorite, removeFromFavorite } from '../Redux/slices/favoriteSlice';
+import React from 'react';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import routes from '../utiles/routes';
+import styles2 from '../styles'
 
 const MovieCard = (props) => {
-  const favMovies = useSelector((state) => state.favoriteMovies.favoriteMovies)
-  const dispatch = useDispatch()
   const {navigate} = useNavigation()
-
-  const handleFavorite = async () => {
-    const favoriteMovies = await storage.getAllDataForKey('favoriteMovies');
-    const isFavorite = favoriteMovies.some(movie => movie.id === props.id);
-    if(isFavorite) {
-      storage.remove({
-        key: 'favoriteMovies',
-        id: `${props.id}`
-      });
-      dispatch(removeFromFavorite(props))
-    } else {
-      storage.save({
-        key: 'favoriteMovies',
-        id: `${props.id}`,
-        data: props
-      })
-      dispatch(addToFavorite(props))
-    }
-  }
 
   return (
     <>
-        <Pressable onPress={()=>navigate(routes.details, {})}>
+        <Pressable onPress={()=>navigate(routes.details, props)}>
           <View style={styles.container}>
               <Image 
                   source={{uri:`https://image.tmdb.org/t/p/w500/${props.poster_path}`}} 
@@ -41,10 +17,7 @@ const MovieCard = (props) => {
                   resizeMode='cover'
                   />
           </View>
-            <View style={styles.cardContainer}>
-              <View style={styles.favoriteIconContainer}>
-                  <MaterialIcons name={favMovies.some(movie => movie.id === props.id)?'favorite':'favorite-border'} color='red' size={23} onPress={handleFavorite}/>
-              </View>
+            <View style={styles2.cardContainer}>
             </View>
         </Pressable>
     </>
@@ -63,6 +36,8 @@ const styles = StyleSheet.create({
   },
   favoriteIconContainer: {
     position: 'absolute',
+    top:2,
+    left:2
   },
   cardContainer: {
     position:"absolute",
